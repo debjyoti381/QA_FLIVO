@@ -1,10 +1,18 @@
 import os
 import streamlit as st
 
-# Access the secrets from environment variables
+# Access secrets from environment variables
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
 
-# Display the secrets (for testing purposes only)
-st.write("Client ID:", client_id)
-st.write("Client Secret:", client_secret)  # Remove this line for production
+# Displaying environment variables
+st.title("Environment Variables Loaded from GitHub Secrets")
+
+st.subheader("Google Project Information")
+st.write("CLIENT_ID:", client_id)
+st.write("CLIENT_SECRET:", client_secret)  # Only for testing; remove in production for security
+
+if client_id and client_secret:
+    st.success("Secrets loaded successfully!")
+else:
+    st.error("Failed to load secrets. Check GitHub secrets configuration.")
